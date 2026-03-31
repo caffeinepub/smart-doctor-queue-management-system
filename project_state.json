@@ -1,0 +1,218 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Real-time Smart Doctor Queue Management System (SaaS + PWA). Patients join the queue live at the hospital (no pre-booking). Frontend: React.js + Tailwind CSS + HTML/CSS/JS. Pages: Landing, Login, Register, Patient/Doctor/Admin/Super Admin Dashboards. Backend: Node.js + Express + MongoDB with Socket.io for real-time updates. Deployment: Vercel (frontend), Render (backend), MongoDB Atlas.",
+  "architectural_notes": [
+    "Stack: React.js + Tailwind CSS (frontend), Node.js + Express + MongoDB (backend), Socket.io for real-time",
+    "MongoDB models: User, Patient, Doctor, Clinic, Token, QueueLog",
+    "Real-time queue updates via Socket.io WebSockets",
+    "Role-based access: Patient, Doctor, Admin, Super Admin",
+    "Deployment: Vercel (frontend), Render (backend), MongoDB Atlas (database)"
+  ],
+  "known_issues": [],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-create-a-landing-page-that-introduces-the-smart-doctor-queue-management-system-with-hero-section-feature-highlights-and-call-to-action-buttons-for-login-and-register-apply-a-consistent-medical-clinical-visual-theme-using-clean-whites-greens-and-teals-with-professional-typography-and-enforce-it-across-all-pages",
+      "title": "Create a Landing page that introduces the Smart Doctor Queue Management System with hero section, feature highlights, and call-to-action buttons for Login and Register. Apply a consistent medical/clinical visual theme using clean whites, greens, and teals with professional typography, and enforce it across all pages.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-login-and-register-pages-with-form-validation-login-accepts-email-and-password-register-accepts-name-email-password-and-role-patient-doctor-admin-on-success-store-the-jwt-token-in-localstorage-and-redirect-to-the-appropriate-dashboard-based-on-role",
+      "title": "Create Login and Register pages with form validation. Login accepts email and password. Register accepts name, email, password, and role (Patient, Doctor, Admin). On success, store the JWT token in localStorage and redirect to the appropriate dashboard based on role.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-the-patient-dashboard-page-showing-current-active-token-number-and-status-live-queue-position-e-g-3rd-in-line-estimated-waiting-time-based-on-average-consultation-time-position-a-qr-code-generated-from-the-token-id-for-check-in-display-a-button-to-cancel-the-active-token-and-a-visit-history-table-of-past-tokens",
+      "title": "Build the Patient Dashboard page showing: current active token number and status, live queue position (e.g., '3rd in line'), estimated waiting time based on average consultation time × position, a QR code generated from the token ID for check-in display, a button to cancel the active token, and a visit history table of past tokens.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-the-doctor-dashboard-page-showing-the-currently-serving-patient-s-name-and-token-number-a-queue-table-listing-all-waiting-patients-with-their-token-number-name-and-wait-time-action-buttons-next-patient-skip-complete-for-each-patient-average-consultation-time-display-and-an-emergency-override-button-to-pull-a-specific-patient-to-the-front-of-the-queue",
+      "title": "Build the Doctor Dashboard page showing: the currently serving patient's name and token number, a queue table listing all waiting patients with their token number, name, and wait time, action buttons (Next Patient, Skip, Complete) for each patient, average consultation time display, and an emergency override button to pull a specific patient to the front of the queue.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-the-admin-dashboard-page-showing-summary-stat-cards-total-patients-today-active-doctors-average-wait-time-completed-consultations-an-analytics-chart-bar-or-line-showing-patient-volume-over-the-past-7-days-and-a-doctor-management-table-with-the-ability-to-add-doctors-to-the-clinic-and-toggle-their-active-status",
+      "title": "Build the Admin Dashboard page showing: summary stat cards (total patients today, active doctors, average wait time, completed consultations), an analytics chart (bar or line) showing patient volume over the past 7 days, and a doctor management table with the ability to add doctors to the clinic and toggle their active status.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-the-super-admin-dashboard-page-showing-platform-wide-stats-total-clinics-total-doctors-total-patients-served-a-subscriptions-revenue-overview-table-listing-all-registered-clinics-with-their-subscription-status-and-a-mock-revenue-figure-and-clinic-management-controls-to-activate-or-deactivate-a-clinic",
+      "title": "Build the Super Admin Dashboard page showing: platform-wide stats (total clinics, total doctors, total patients served), a subscriptions/revenue overview table listing all registered clinics with their subscription status and a mock revenue figure, and clinic management controls to activate or deactivate a clinic.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-navbar-component-and-a-collapsible-sidebar-component-the-navbar-shows-the-app-name-logo-a-dark-light-mode-toggle-and-a-language-switcher-english-tamil-the-sidebar-shows-role-appropriate-navigation-links-both-components-are-used-consistently-across-all-authenticated-pages",
+      "title": "Implement a Navbar component and a collapsible Sidebar component. The Navbar shows the app name/logo, a dark/light mode toggle, and a language switcher (English / Tamil). The Sidebar shows role-appropriate navigation links. Both components are used consistently across all authenticated pages.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-in-app-notification-alerts-when-a-patient-s-queue-position-reaches-3-or-fewer-display-a-banner-toast-notification-with-the-message-your-turn-is-coming-soon-in-the-selected-language-trigger-a-browser-native-notification-api-alert-if-permission-is-granted-add-a-visual-notification-bell-icon-in-the-navbar-that-shows-unread-count",
+      "title": "Implement in-app notification alerts: when a patient's queue position reaches 3 or fewer, display a banner/toast notification with the message 'Your turn is coming soon!' in the selected language. Trigger a browser-native Notification API alert if permission is granted. Add a visual notification bell icon in the Navbar that shows unread count.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-configure-the-frontend-as-a-progressive-web-app-pwa-by-adding-a-web-app-manifest-manifest-json-with-app-name-icons-theme-color-and-display-mode-standalone-and-registering-a-service-worker-for-basic-offline-caching-of-the-app-shell",
+      "title": "Configure the frontend as a Progressive Web App (PWA) by adding a web app manifest (manifest.json) with app name, icons, theme color, and display mode 'standalone', and registering a service worker for basic offline caching of the app shell.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-generate-a-clinic-logo-image-and-a-queue-management-hero-illustration-for-the-landing-page",
+      "title": "Generate a clinic logo image and a queue management hero illustration for the landing page.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-audit-and-fix-all-typescript-compilation-errors-missing-imports-broken-module-references-and-misconfigured-build-settings-in-the-react-frontend-that-caused-the-deployment-to-fail-ensure-all-pages-landing-login-register-patient-dashboard-doctor-dashboard-admin-dashboard-super-admin-dashboard-components-navbar-sidebar-notifications-and-pwa-configuration-build-cleanly",
+      "title": "Audit and fix all TypeScript compilation errors, missing imports, broken module references, and misconfigured build settings in the React frontend that caused the deployment to fail. Ensure all pages (Landing, Login, Register, Patient Dashboard, Doctor Dashboard, Admin Dashboard, Super Admin Dashboard), components (Navbar, Sidebar, notifications), and PWA configuration build cleanly.",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Live token generation and queue position tracking for patients",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "QR code check-in and estimated waiting time display",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Voice/notification alerts for queue updates",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Dark/light mode and multi-language support (English/Tamil)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Patient Dashboard: live token, queue position, estimated wait, QR code, cancel token, visit history",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Doctor Dashboard: current patient, queue table, Next/Skip/Complete buttons, average consultation, emergency override",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Admin Dashboard: stats cards, analytics charts, doctor management",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Super Admin Dashboard: platform stats, revenue & subscriptions, clinic management",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "JWT auth with role-based middleware and all queue APIs (generate, update, complete, cancel)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "PWA setup and deployment config for Vercel + Render + MongoDB Atlas with environment variables",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Implement JWT-based authentication and role-based access control in the backend. Define four roles: Patient, Doctor, Admin, SuperAdmin. Protect all API routes with auth middleware that verifies the JWT and checks the role. Store users in a User stable data structure with fields: id, name, email, hashedPassword, role, createdAt.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Implement backend data models and API endpoints for queue management: Token (id, patientId, doctorId, clinicId, tokenNumber, status [waiting/serving/completed/cancelled/skipped], issuedAt, completedAt), QueueLog (id, tokenId, action, timestamp, notes), Doctor (id, userId, clinicId, specialization, avgConsultationMinutes), Clinic (id, name, adminId, address, isActive).",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-15",
+      "summary": "Implement queue management API endpoints: POST /api/tokens/generate (patient joins queue live, generates a unique token number), GET /api/tokens/my (patient fetches their active token), PATCH /api/tokens/:id/complete (doctor marks token as completed), PATCH /api/tokens/:id/skip (doctor skips a token), PATCH /api/tokens/:id/cancel (patient or doctor cancels token), GET /api/queue/:doctorId (fetch full queue for a doctor), PATCH /api/tokens/:id/emergency (doctor sets emergency override to move a patient to front).",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-16",
+      "summary": "Implement real-time queue updates using polling (every 5 seconds via React Query) since WebSockets/Socket.io are not supported on the platform. When a token status changes (next patient called, token completed, cancelled), the relevant dashboards automatically reflect the update without manual refresh.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-21",
+      "summary": "Implement admin analytics API endpoints: GET /api/admin/stats (today's patient count, active doctors, average wait, completed tokens for a clinic), GET /api/admin/chart (patient volume per day for the past 7 days), GET /api/superadmin/stats (platform-wide aggregate counts), GET /api/superadmin/clinics (list all clinics with status and mock revenue).",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-22",
+      "summary": "Audit and fix all compilation and runtime errors in the Motoko backend (backend/main.mo) that caused the deployment to fail. Ensure the single-actor compiles cleanly with all stable data structures, auth logic, queue management endpoints, and admin analytics endpoints defined in prior requirements.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Smart Doctor Queue Management System",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

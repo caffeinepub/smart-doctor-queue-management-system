@@ -1,0 +1,79 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-24T16:09:53.616Z",
+  "summary": "The diff adds 27 new files covering the Motoko backend (backend/main.mo) and a comprehensive React frontend (pages, components, hooks, lib utilities, CSS). Both REQ-16 and REQ-17 are substantially addressed, but several acceptance criteria have concerns or gaps. The backend uses a non-standard 'mo:core/*' import path style and several invalid Motoko API calls (e.g., Map.singleton, map.add, array.concat, currentTime.toText(), queueArray.values().contains()) that are likely to cause compilation errors rather than fixing them. The frontend appears well-structured with all required pages and components present. PWA manifest and service worker configuration files are among the 7 omitted files and cannot be confirmed.",
+  "missing_requirements": [
+    {
+      "id": "REQ-16",
+      "requirement": "backend/main.mo compiles without errors or warnings; All stable variables and data structures are correctly typed",
+      "reason": "The Motoko code uses likely-invalid APIs: 'mo:core/Map' with Map.singleton, Map.empty, and mutable map.add/map.get methods which do not match the standard Motoko base library API. Additionally, 'currentTime.toText()' on an Int is not valid Motoko syntax, and 'queueArray.values().contains()' is not a valid array method. These issues would cause compilation failures rather than fixing them.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "requirement": "All stable variables and data structures are correctly typed",
+      "reason": "The backend uses 'let' (immutable) bindings for all maps and there are no 'stable var' declarations for persistent state across upgrades, which was required by prior requirements for stable data structures.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-17",
+      "requirement": "PWA manifest and service worker are correctly referenced",
+      "reason": "PWA configuration files (manifest.json, service worker, vite.config.ts with PWA plugin) are among the 7 omitted files and cannot be verified as present or correctly configured.",
+      "evidence": []
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Re-adding immutable frontend hook files as new added files",
+      "reason": "The build request explicitly states useInternetIdentity.ts, useActor.ts, and main.tsx must not be altered. The diff shows them as ADDED files, suggesting they were recreated, which risks overwriting protected files.",
+      "evidence": [
+        "frontend/src/hooks/useActor.ts",
+        "frontend/src/hooks/useInternetIdentity.ts",
+        "frontend/src/main.tsx"
+      ]
+    },
+    {
+      "description": "Demo account authentication system with hardcoded credentials",
+      "reason": "A demo account system with hardcoded emails and passwords was introduced in Login and Register pages. The build request only specifies fixing compilation errors, not introducing new authentication mechanisms.",
+      "evidence": [
+        "frontend/src/pages/Login.tsx",
+        "frontend/src/pages/Register.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.62,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/DashboardLayout.tsx",
+    "frontend/src/components/Navbar.tsx",
+    "frontend/src/components/Sidebar.tsx",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/index.css",
+    "frontend/src/lib/AppContext.tsx",
+    "frontend/src/lib/auth.ts",
+    "frontend/src/lib/i18n.ts",
+    "frontend/src/lib/utils.ts",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/AdminDashboard.tsx",
+    "frontend/src/pages/DoctorDashboard.tsx",
+    "frontend/src/pages/Landing.tsx",
+    "frontend/src/pages/Login.tsx",
+    "frontend/src/pages/PatientDashboard.tsx",
+    "frontend/src/pages/Register.tsx",
+    "frontend/src/pages/SuperAdminDashboard.tsx",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

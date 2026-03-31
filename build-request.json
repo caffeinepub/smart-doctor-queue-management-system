@@ -1,0 +1,61 @@
+{
+  "kind": "build_request",
+  "title": "Fix deployment error and ensure full application builds successfully",
+  "projectName": "Smart Doctor Queue",
+  "priority": "high",
+  "requirements": [
+    {
+      "id": "REQ-16",
+      "text": "Audit and fix all compilation and runtime errors in the Motoko backend (backend/main.mo) that caused the deployment to fail. Ensure the single-actor compiles cleanly with all stable data structures, auth logic, queue management endpoints, and admin analytics endpoints defined in prior requirements.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-3"
+        ],
+        "quotes": [
+          "rectify that"
+        ]
+      },
+      "acceptanceCriteria": [
+        "backend/main.mo compiles without errors or warnings",
+        "All stable variables and data structures are correctly typed",
+        "All public query and update functions are syntactically valid",
+        "Deployment succeeds without backend compilation errors"
+      ]
+    },
+    {
+      "id": "REQ-17",
+      "text": "Audit and fix all TypeScript compilation errors, missing imports, broken module references, and misconfigured build settings in the React frontend that caused the deployment to fail. Ensure all pages (Landing, Login, Register, Patient Dashboard, Doctor Dashboard, Admin Dashboard, Super Admin Dashboard), components (Navbar, Sidebar, notifications), and PWA configuration build cleanly.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3"
+        ],
+        "quotes": [
+          "rectify that"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Frontend builds without TypeScript errors",
+        "All page and component imports resolve correctly",
+        "No missing dependency or missing asset errors during build",
+        "PWA manifest and service worker are correctly referenced",
+        "Deployment succeeds without frontend build errors"
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not alter immutable frontend paths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui",
+    "All Motoko logic must remain in the single actor at backend/main.mo",
+    "Do not introduce WebSockets or Socket.io; use polling via React Query for real-time updates"
+  ],
+  "nonGoals": [
+    "Adding new features beyond what is already specified",
+    "Changing the visual design or theme",
+    "Modifying the data model beyond fixing type errors"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

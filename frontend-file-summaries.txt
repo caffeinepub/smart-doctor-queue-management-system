@@ -1,0 +1,5 @@
+{
+  "frontend/src/App.tsx": "Main application entry point that sets up TanStack Router with all routes (Landing, Login, Register, Patient/Doctor/Admin/SuperAdmin dashboards), wraps the app in AppProvider, and enforces role-based route guards using beforeLoad redirects.",
+  "frontend/src/pages/AdminDashboard.tsx": "Admin dashboard page with stat cards, tabbed interface for analytics (bar chart), doctor management (toggle active status, add doctor), department management (add department via backend), and admin logs — all wired to backend queries.",
+  "frontend/src/pages/SuperAdminDashboard.tsx": "Super admin dashboard with platform-wide stats, clinic management table (activate/deactivate clinics, subscription status), revenue line chart, admin logs from backend, and a live backend data summary panel."
+}

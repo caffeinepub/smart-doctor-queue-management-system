@@ -1,0 +1,95 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Fix Frontend Build Errors for Smart Doctor Queue",
+  "requirements": [
+    {
+      "id": "REQ-17",
+      "summary": "Audit and fix all TypeScript compilation errors, missing imports, broken module references, and misconfigured build settings to ensure the React frontend builds cleanly",
+      "acceptanceCriteria": [
+        "Frontend builds without TypeScript errors",
+        "All page and component imports resolve correctly",
+        "No missing dependency or missing asset errors during build",
+        "PWA manifest and service worker are correctly referenced",
+        "Deployment succeeds without frontend build errors"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Landing.tsx",
+          "operation": "modify",
+          "description": "Fix any TypeScript errors, ensure all imports (React, router, components, assets) resolve correctly. Wire generated hero-illustration.dim_1200x600.png from frontend/public/assets/generated/ and clinic-logo.dim_256x256.png into the landing page as static assets."
+        },
+        {
+          "path": "frontend/src/pages/Login.tsx",
+          "operation": "modify",
+          "description": "Fix TypeScript errors, ensure authentication hook imports are correct, verify form validation logic compiles cleanly."
+        },
+        {
+          "path": "frontend/src/pages/Register.tsx",
+          "operation": "modify",
+          "description": "Fix TypeScript errors, ensure all form field types and validation logic are correctly typed, verify registration flow compiles."
+        },
+        {
+          "path": "frontend/src/pages/PatientDashboard.tsx",
+          "operation": "modify",
+          "description": "Fix TypeScript errors, ensure backend interface imports match frontend/src/backend.d.ts types, verify queue check-in and status polling logic compiles."
+        },
+        {
+          "path": "frontend/src/pages/DoctorDashboard.tsx",
+          "operation": "modify",
+          "description": "Fix TypeScript errors, ensure queue management functions (viewQueueStatus, updateQueueMode) are correctly typed per backend interface, verify employee-specific logic compiles."
+        },
+        {
+          "path": "frontend/src/pages/AdminDashboard.tsx",
+          "operation": "modify",
+          "description": "Fix TypeScript errors, ensure department/queue/employee CRUD functions match backend interface signatures, verify analytics data fetching compiles cleanly."
+        },
+        {
+          "path": "frontend/src/pages/SuperAdminDashboard.tsx",
+          "operation": "modify",
+          "description": "Fix TypeScript errors, ensure admin logs retrieval (getAdminLogs) matches backend interface, verify super admin analytics rendering compiles."
+        },
+        {
+          "path": "frontend/src/components/Navbar.tsx",
+          "operation": "modify",
+          "description": "Fix TypeScript errors, ensure navigation links and authentication state logic compile correctly. Reference clinic-logo.dim_256x256.png from frontend/public/assets/generated/ if used in branding."
+        },
+        {
+          "path": "frontend/src/components/Sidebar.tsx",
+          "operation": "modify",
+          "description": "Fix TypeScript errors, ensure role-based menu rendering logic and route references compile cleanly."
+        },
+        {
+          "path": "frontend/src/components/notifications/index.tsx",
+          "operation": "modify",
+          "description": "Fix TypeScript errors in notification component, ensure toast/alert imports and notification state management compile correctly."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Fix TypeScript errors in router configuration, ensure all route imports (Landing, Login, Register, PatientDashboard, DoctorDashboard, AdminDashboard, SuperAdminDashboard) resolve and are correctly wired. Verify React Query provider and authentication context are correctly configured."
+        },
+        {
+          "path": "frontend/vite.config.ts",
+          "operation": "modify",
+          "description": "Audit and fix any misconfigured build settings, ensure PWA plugin and asset handling are correctly configured, verify all path aliases resolve."
+        },
+        {
+          "path": "frontend/tsconfig.json",
+          "operation": "modify",
+          "description": "Fix any TypeScript compiler options causing build errors, ensure module resolution and path mappings are correct."
+        },
+        {
+          "path": "frontend/public/manifest.json",
+          "operation": "modify",
+          "description": "Ensure PWA manifest references correct icon paths and app metadata, fix any validation errors."
+        },
+        {
+          "path": "frontend/public/sw.js",
+          "operation": "modify",
+          "description": "Fix service worker registration and caching logic if present, ensure it compiles and is correctly referenced by the build."
+        }
+      ]
+    }
+  ]
+}
